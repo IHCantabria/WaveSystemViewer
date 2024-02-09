@@ -360,6 +360,18 @@
   -o-transform: rotate(-210deg);
 }
 
+.den .switch label:nth-child(7) {
+  -moz-transform: rotate(210deg);
+  -webkit-transform: rotate(210deg);
+  -o-transform: rotate(210deg);
+}
+
+.den .switch label:nth-child(7) span {
+  -moz-transform: rotate(-210deg);
+  -webkit-transform: rotate(-210deg);
+  -o-transform: rotate(-210deg);
+}
+
 .den .switch input {
   position: absolute;
   opacity: 0;
