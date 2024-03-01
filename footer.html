@@ -1,0 +1,75 @@
+<?php
+/**
+ * The template for displaying the footer
+ *
+ * Contains the closing of the #content div and all content after.
+ *
+ * 
+ */
+
+?>
+
+	<footer id="colophon" class="site-footer">
+	<div class="footer-container">
+  	 	<div class="footer-row">
+		   <div class="footer-col site-footer__logo">
+           <a href="https://ihcantabria.com/">
+            <img src="https://ihcantabria.com/wp-content/uploads/2019/02/Logo-IHCantabria-Universidad-Cantabria-whitev2-copia-2.png" width="187" height="76" alt="IHCantabria" id="logo" data-height-percentage="74">
+          </a>
+			</div>
+  	 		<div class="footer-col">
+  	 			<h4>Support</h4>
+  	 			<?php
+					$support_links = create_links(
+						'Contact Us', 'https://www.example.com/contact',
+						'FAQs', 'https://www.example.com/faqs',
+						'Shipping & Returns', 'https://www.example.com/docs'
+					);
+					echo $support_links;
+				?>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>about</h4>
+  	 			<?php
+					$about_links = create_links(
+						'About Us', 'https://www.example.com/contact',
+						'Our Partners', 'https://www.example.com/faqs',
+						'Reef Planting', 'https://www.example.com/docs',
+						'Tree Planting', 'https://www.example.com/docs'
+					);
+					echo $about_links;
+				?>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>legal</h4>
+  	 			<?php
+					$legal_links = create_links(
+						'Terms Of Use', 'aa',
+						'Privacy Policy', 'https://www.example.com/faqs',
+						'Subscrition Policy', 'https://www.example.com/docs',
+						'Accessibility', 'https://www.example.com/docs'
+					);
+					echo $legal_links;
+				?>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>Keep In Touch</h4>
+  	 			<div class="social-links">
+  	 				<a href="#"><i class="fab fa-facebook-f"></i></a>
+  	 				<a href="#"><i class="fab fa-twitter"></i></a>
+  	 				<a href="#"><i class="fab fa-instagram"></i></a>
+  	 				<a href="#"><i class="fab fa-linkedin-in"></i></a>
+  	 			</div>
+  	 		</div>
+  	 	</div>
+		<div class="footer-row-copyright" style="background-color:#f4eedfff">
+			<p> © <?php echo date('Y'); ?> IH CANTABRIA</p>
+		</div>
+  	 </div>
+
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+
+</body>
+</html>
