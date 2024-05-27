@@ -18,51 +18,12 @@
     {% endif %} -->
 
 </head>
+
 <!-- <body style = 'background-color: black;'> -->
 <body class = "day-night" id = "day-night">
-    <div class="row">
-        <!-- NAVIGATION BAR -->
-        <div class=" menu-container">
-            <div class="menu">
-                <a href="https://ihcantabria.com/" class="logo"><img src="https://ihcantabria.com/wp-content/uploads/2019/02/Logo-IHCantabria-Universidad-Cantabria-whitev2-copia-2.png" width="140" height="auto" alt="IHCantabria" id="logo"></a>
-            <ul class="clearfix">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a>
-                <ul>
-                    <li><a href="#">JONSWAP</a>
-                    <ul>
-                        <li><a href="#">Best γ fitting method</a></li>
-                        <li><a href="#">JONSWAP spectrum climate variability</a></li>
-                    </ul>
-                    </li>
-                    <li><a href="#">Directional wave spectrum</a>
-                    <ul>
-                        <li><a href="#">Introduction</a></li>
-                        <li><a href="#">Wave Partitions</a></li>
-                        <li><a href="#">Wave Systems</a></li>
-                    </ul>
-                    </li>
-                    <li><a href="#">Research</a>
-                    <ul>
-                        <li><a href="#">Related Papers</a></li>
-                    </ul>
-                    </li>
-                </ul>
-                </li>
-                <li><a href="#">Dashboards/Viewers</a>
-                <ul>
-                    <li><a href="#">Wave Partitions</a></li>
-                    <li><a href="Swell_wave_systems_dashboard.html">Swell Wave Systems</a></li>
-                    <li><a href="#">Wave Systems</a></li>
-                </ul>
-                </li>
-                <li><a href="#">Contact us</a></li>
-            </ul>
-            </div>
-        </div>
-        <!-- END OF THE NAVIGATION BAR -->
-    </div>
-
+    <?php
+        include('header.php');
+    ?>
     <!-- BLOCK WHERE THERE IS THE REAL INDEX.HTML CONTENT -->
     <!-- DAY NIGHT BUTTON -->
     <!-- <div>
@@ -331,16 +292,18 @@
       });
      
     </script>
-
+    <?php
+        include('footer.php');
+    ?>
 </body>
 
 <script src="./js/day-night-js.js"></script>
 <!-- LOADING THE NAV BAR NEED THE QUERY OF JS -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script type="text/javascript" src="./js/navbar-js.js"></script>
+
 <!-- <script type="text/javascript" src="./js/common-layout.js"></script> -->
 
 
-<iframe src="footer.html" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+<!-- <iframe src="footer.html" width="100%" height="100%" frameborder="0" scrolling="no"></iframe> -->
+<!-- <include src="footer.php"></include> -->
 </html>
 

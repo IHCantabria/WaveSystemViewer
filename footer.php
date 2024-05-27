@@ -58,10 +58,10 @@
   	 			</div>
   	 		</div>
   	 	</div>
-		<div class="footer-row-copyright" style="background-color:#f4eedfff">
+		<!-- <div class="footer-row-copyright" style="background-color:#f4eedfff">
 			<p> © 2024 IH CANTABRIA</p>
 		</div>
-  	 </div>
+  	 </div> -->
 
 	</footer><!-- #colophon -->
 </div><!-- #page -->
