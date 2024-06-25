@@ -49,7 +49,16 @@
 }
 
 #chart1{
-  height: 860px;
+  height: 45rem;
+  /* max-width: 90%; */
+}
+
+.card{
+  max-width: 90%;
+}
+
+.container.p {
+  max-width: 90%;
 }
 
 /* Define a style for the active button */
@@ -120,7 +129,17 @@
   box-shadow: none;
 }
 
-.button-wrapper{text-align:center;display:inline-block; margin:10px;}
+.button-wrapper{
+  text-align:center;
+  display:inline-block; 
+  margin:10px;
+}
+
+.row .hold-btn{
+  display: flex;
+  justify-content: center;
+}
+
 
 /* .ball{
   background-color: #001e3d;
@@ -355,6 +374,18 @@
 }
 
 .den .switch label:nth-child(6) span {
+  -moz-transform: rotate(-210deg);
+  -webkit-transform: rotate(-210deg);
+  -o-transform: rotate(-210deg);
+}
+
+.den .switch label:nth-child(7) {
+  -moz-transform: rotate(210deg);
+  -webkit-transform: rotate(210deg);
+  -o-transform: rotate(210deg);
+}
+
+.den .switch label:nth-child(7) span {
   -moz-transform: rotate(-210deg);
   -webkit-transform: rotate(-210deg);
   -o-transform: rotate(-210deg);
@@ -807,12 +838,30 @@
 /* ======================================
 NAVIGATION BAR 
 =========================================*/
-
-a {
-  color: #333;
+/* Highlight style for the active link */
+/* Default style for menu items */
+.menu ul li a.active {
+  background-color: #ac03ae; /* Example background color for active link */
+  color: #fff; /* Text color for active link */
 }
 
-.menu-container {
+.menu-container a {
+  color: #333!important;
+}
+
+.menu > ul > li > ul > li > ul > li a:hover {
+  background: #BED7DC;
+}
+
+.menu > .active a {
+  background-color: #e1c348;
+}
+
+.menu > ul > li > ul > li a:hover {
+  background: #BED7DC;
+}
+
+.menu {
   /* margin: 0 auto; */
   background: #5391fd;
 }
@@ -907,6 +956,13 @@ a {
   float: left;
 }
 .menu > ul > li > ul > li a {
+  color: #777;
+  padding: .2em 0;
+  width: 95%;
+  display: block;
+  border-bottom: 1px solid #ccc;
+}
+.menu > ul > li > ul > li p {
   color: #777;
   padding: .2em 0;
   width: 95%;
@@ -1011,3 +1067,135 @@ Mobile style's
     display: block;
   }
 }
+
+/* ==========================================
+              FOOTER BAR
+============================================= */
+#colophon {
+  background-color: #5391fd;
+}
+
+.footer-container{
+	max-width: 150rem;
+	margin:auto;
+}
+.footer-row{
+	display: flex;
+	/* flex-wrap: wrap; */
+}
+ul{
+	list-style: none;
+}
+/* .footer{
+	background-color: #24262b;
+    padding: 70px 0;
+} */
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+.footer-col h4{
+	font-size: 18px;
+	color: #ffffff;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
+}
+.footer-col h4::before{
+	content: '';
+	position: absolute;
+	left:0;
+	bottom: -10px;
+	background-color: #e91e63;
+	height: 2px;
+	box-sizing: border-box;
+	width: 50px;
+}
+.footer-col ul li:not(:last-child){
+	margin-bottom: 10px;
+}
+.footer-col ul li a{
+	font-size: 16px;
+	text-transform: capitalize;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 300;
+	color: #bbbbbb;
+	display: block;
+	transition: all 0.3s ease;
+  font-weight: 500;
+}
+.footer-col ul li a:hover{
+	color: #ffffff;
+	padding-left: 8px;
+}
+.footer-col .social-links a{
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	background-color: rgba(255,255,255,0.2);
+	margin:0 10px 10px 0;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	color: #ffffff;
+	transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+	color: #24262b;
+	background-color: #ffffff;
+}
+
+/*responsive*/
+@media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+}
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+}
+}
+
+.social-links {
+  display: flex;
+  justify-content: flex-start; /* Optional: adjust as needed */
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  margin: 0 10px; /* Adjust spacing between icons */
+  font-size: 24px; /* Adjust icon size */
+}
+
+/*===========================================
+SWs WSYs and WSYs buttons style
+=============================================*/
+.css-right-space{
+  margin-right: 1rem;
+}
+.container.ws-sw-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.btn-active_sys {
+  background-color: green;
+  color: white;
+  border-color: lightgreen;
+}
+
+.btn-wsys-style{
+  border-color: lightgreen;
+}
+
+.btn-wsys-style:hover{
+  background-color: lightgreen;
+  color: white;
+}
+

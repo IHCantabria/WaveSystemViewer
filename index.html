@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,216 +9,155 @@
     <!-- https://github.com/michalsnik/aos -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./main.css" type="text/css">
+    <link rel="stylesheet" href="/main.css" type="text/css">
+    <!-- JQUERY FOR ADD THE HTML HEADER AS FUNCTION -->
+    <!-- <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous">
+    </script>
 
-    <!-- {% if title %}
-        <title>CodeWithPrince-{{title}}</title>
-    {% else %}
-        <title>CodeWithPrince</title>
-    {% endif %} -->
+    <script>
+        $(function() {
+            $("#header").load("header.html");
+            $("#footer").load("footer.html");
+        });
+      </script> -->
 
 </head>
+
+<!-- <iframe src="header.html" width="100%" height="100%" frameborder="0" scrolling="no"></iframe> -->
 <!-- <body style = 'background-color: black;'> -->
 <body class = "day-night" id = "day-night">
-    <div class="row">
-    </div>
 
     <!-- BLOCK WHERE THERE IS THE REAL INDEX.HTML CONTENT -->
+    <!-- <div>
+        <button id=change-background>Night Mode</button>
+    </div> -->
+    <!-- HEADER -->
+    <div id="header"></div>
+    <!-- END HEADER -->
+    <!-- DAY NIGHT BUTTON -->
+    <!-- <div>
+        <button id=change-background>Night Mode</button>
+    </div> -->
+    <!-- <div class="col-2 col-day-night">
+        <div class="toggle toggle--daynight">
+            <input type="checkbox" id="toggle--daynight" class="toggle--checkbox">
+            <label class="toggle--btn" for="toggle--daynight"><span class="toggle--feature"></span></label>
+        </div>
+    </div> -->
+    <!-- END DAY NIGHT BUTTON -->
     <div class="row p-4">
-        <div class="h2" style = "text-align: center;">
+        <div class="h2" id="waveClimateText" style="text-align: center;">
             WAVE CLIMATE SWELL SYSTEMS
         </div>
+
+        <div class="container p m-auto day-night">
+            <p><b>A wave system is considered as the long-term climate conditions prevailing over a frequency-direction wave energy area collecting similar environmental and physical characteristics.</b><br></p>
+
+            <p>This viewer shows the resulting wave systems from the scientific publication:
+                 <a href="https://doi.org/10.3389/fmars.2024.1385285" target="_blank">Mazzaretto, O. M., & Menendez, M. (2024). A worldwide coastal analysis of the climate wave systems. Frontiers in Marine Science, 11, 1385285.</a></p>
+                 
+            <p>The wave data analyzed to get the wave systems is the 
+                    <a href="https://doi.org/10.1016/j.coastaleng.2017.03.005" target="_blank">GOW</a>
+                    (Global wave hindcast) directional wave spectra, from 1989 to 2020 each 3-hourly.
+            </p>
+                
+            <p>A more extensive <b>guide</b> is available in the <a href="https://www.frontiersin.org/articles/10.3389/fmars.2024.1385285/full#supplementary-material" target="_blank">Supplementary Material.</a></p>
+
+            <p>The interactive map below indicates the identified swell wave systems <b>(Swell WSYs)</b> along the coast worldwide.
+                 You can zoom in/out and hover a target coastal point to obtain more detailed information in a pop-up.
+            </p>
+
+            <p>
+                You can view the swell wave systems <b>(Swell WSYs)</b> but also toggle to the total wave systems, 
+                including the wind sea wave system information, by clicking on <b>WSYs</b> button (swells and wind sea) below.
+            </p>
+            
+        </div>
+        
+        <div class="container ws-sw-button">
+            <button onclick="handleButtonClick('SWWSYs')" type="button" class="btn btn-wsys-style css-right-space" id="SWWSYs" title = "Click to view: Swell Wave Systems">Swell WSYs</button>
+            <button onclick="handleButtonClick('WSYs')" type="button" class="btn btn-wsys-style" id="WSYs" title = "Click to view: Wave Systems (Swells and Wind Sea)">WSYs</button>
+        </div>
+    
+        <script src="/js/swwsys-wsys-btn.js"></script>
+
         <div class="card m-auto day-night">
             <div class="card-body day-night">
                 <div id="chart1"></div>
-                <!---------------- LOADING THE SCRIPTS ----------------------->
-                <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-                <!-- --------------SWITCH BUTTON------------------ -->
-                <script>
-                    // Function to add the "holding" class to existing buttons
-                    function addHoldingClassToButtons() {
-                        const existingButtons = document.querySelectorAll('.existing-button');
-                        existingButtons.forEach(button => {
-                            button.classList.add('holding');
-                        });
-                    }
-                </script>
-                <script>
-                    // Function to remove the "holding" class from existing buttons
-                    function removeHoldingClassFromButtons() {
-                        const existingButtons = document.querySelectorAll('.existing-button');
-                        existingButtons.forEach(button => {
-                            button.classList.remove('holding');
-                        });
-                    }
-                </script>
-                <script>
-                    // Function to toggle the "holding" class based on the switch state
-                    function toggleHoldingClass() {
-                        const switchCheckbox = document.getElementById('holdSwitch');
-                        
-                        if (switchCheckbox.checked) {
-                            addHoldingClassToButtons();
-                        } else {
-                            removeHoldingClassFromButtons();
-                        }
-                    }
-                    // Get the checkbox element
-                    const switchCheckbox = document.getElementById('holdSwitch');
-                    // Add a change event listener to the checkbox
-                    switchCheckbox.addEventListener('change', toggleHoldingClass);
-                </script>
-                <!-- --------------END SWITCH BUTTON------------------ -->
-                <!--------------PLOT PLOTLY WITH JS --------------------->
-                <script>
-                    // Asynchronous function to load JSON file
-                    function loadJSONFile(filePath) {
-                        return fetch(filePath)
-                            .then(response => {
-                                if (!response.ok) {
-                                    throw new Error(`Failed to load JSON file: ${response.status} ${response.statusText}`);
-                                }
-                                return response.json();
-                            })
-                            .catch(error => {
-                                console.error('Error loading JSON file:', error);
-                            });
-                    };
-                </script>
-                <script>
-                    let graphs1;
-                    function loadJSONAndStore(filePath) {
-                    return loadJSONFile(filePath)
-                        .then(data => {
-                            graphs1 = data; // Assign the JSON data to the global variable
-                            return data; // Return the JSON data
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
-                    }
-                </script>
-                <script>
-                    let activeButton = null;
-                    function myFunction(jsonFilePath, buttonElement) {
-                        // Remove the active class from the previously active button
-                        if (activeButton) {
-                            activeButton.classList.remove('active');
-                        }
-                        
-                        // If a buttonElement is provided, add the active class to it
-                        if (buttonElement) {
-                            buttonElement.classList.add('active');
-                            activeButton = buttonElement;
-                        }
-
-                        const switchCheckbox = document.getElementById('holdSwitch');
-                        if (!switchCheckbox.checked) { // Use ! to check if it's not checked
-                            loadJSONAndStore('./jsons_plotly/sum_99/scatter.json');
-                        }
-                        let dataj;
-                        loadJSONFile(jsonFilePath)
-                            .then(data => {
-                                if (data) {
-                                    dataj = data;
-                                    console.log('JSON data loaded:', dataj);
-                                }
-                                Plotly.purge(chart1);
-                                Plotly.newPlot("chart1", graphs1.data, dataj.layout);
-                                Plotly.plot("chart1", dataj.data, dataj.layout,
-                                
-                                // custom button
-                                // {
-                                // modeBarButtonsToAdd: [{
-                                //     name: 'custom button',
-                                //     icon: Plotly.Icons['coffee'],
-                                //     click: function() {
-                                //         console.log('hello world');     
-                                //     }}]}
-                                    
-                                    );
-                            })
-                            .catch(error => {
-                                console.error('Error:', error);
-                            });
-                    };
-                </script>
-                <script>
-                    function myFunction_reset_view(jsonFilePath,buttonElement) {
-                        // Remove the active class from the previously active button
-                        if (activeButton) {
-                            activeButton.classList.remove('active');
-                        }
-                        loadJSONFile(jsonFilePath)
-                            .then(data => {
-                                if (data) {
-                                    dataj = data;
-                                    console.log('JSON data loaded:', dataj);
-                                }
-                                Plotly.purge(chart1);
-                                Plotly.newPlot("chart1", dataj, {});
-                            })
-                            .catch(error => {
-                                console.error('Error:', error);
-                            });
-                    };
-                </script>
-                <div class="card-body">
-                    <div class="row p-4">
+                    
+                    <!---------------- LOADING THE SCRIPTS ----------------------->
+                    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+                    <script src="/js/plotly-reusable.js"></script>
+                    <div class="card-body" id="card-body">
                         <script>
-                            loadJSONAndStore('./jsons_plotly/sum_99/scatter.json')
-                            myFunction_reset_view('./jsons_plotly/sum_99/scatter.json',{});
+                            loadJSONAndStore('/jsons_plotly/sum_99/scatter.json')
+                            myFunction_reset_view('/jsons_plotly/sum_99/scatter.json',{});
                         </script> 
                     </div>
-                </div>
-                <!-------------- PLOT PLOTLY WITH JS --------------------->
-                <!--------------- END LOAD THE SCRIPTS ------------->
-                <div class="row p-10">
-                    <div class="h3">
-                        Swell wave systems quiver plot
+                    
+                    <!-------------- PLOT PLOTLY WITH JS --------------------->
+                    <!--------------- END LOAD THE SCRIPTS ------------->
+                    <div class="container">
+                        <button onclick="myFunction('/jsons_plotly/sum_99/Africa.json',this)" type="button" class="btn btn-outline-primary" id="btnAfr">Africa</button>
+                        <button onclick="myFunction('/jsons_plotly/sum_99/Europe.json',this)" type="button" class="btn btn-outline-primary" id="btnEUr">Europe</button>
+                        <button onclick="myFunction('/jsons_plotly/sum_99/AmericaN.json',this)" type="button" class="btn btn-outline-primary" id="btnAmN">North America</button>
+                        <button onclick="myFunction('/jsons_plotly/sum_99/AmericaS.json',this)" type="button" class="btn btn-outline-primary" id="btnAmS">South America</button>
+                        <button onclick="myFunction('/jsons_plotly/sum_99/Asia1.json',this)" type="button" class="btn btn-outline-primary" id="btnAs1">Asia 1</button>
+                        <button onclick="myFunction('/jsons_plotly/sum_99/Asia2.json',this)" type="button" class="btn btn-outline-primary" id="btnAs2">Asia 2</button>
+                        <button onclick="myFunction('/jsons_plotly/sum_99/Asia3.json',this)" type="button" class="btn btn-outline-primary" id="btnAs3">Asia 3</button>
+                        <button onclick="myFunction('/jsons_plotly/sum_99/Oceania1.json',this)" type="button" class="btn btn-outline-primary" id="btnOc1">Oceania 1</button>
+                        <button onclick="myFunction('/jsons_plotly/sum_99/Oceania2.json',this)" type="button" class="btn btn-outline-primary" id="btnOc2">Oceania 2</button>
+                        <button onclick="myFunction_reset_view('/jsons_plotly/sum_99/scatter.json',this)" type="button" class="btn btn-outline-primary" id="btnRset">Reset View</button>
                     </div>
-                    <div class="row p-4">
-                        <p class="card-text day-night" style="padding-top: 0.5rem;">
-                            To see the quiver plot information of each swell wave system select one of the world region first.
-                            Once the arrows (quiver plot) appear, a colorbar is loaded on the left and a zoom over the interested region is applied.
-                            The meaning of the arrows are:
-                            <ul style="margin-left: 3rem">
-                                <li>Color: identifies the relative energy (%) of each swell wave system, the colorbar show the intensity;</li>
-                                <li>Size: represents the mean Tp;</li>
-                                <li>Direction: represents the mean MWD.</li>
-                            </ul>
-                        <!-- 
-                            When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
-                        \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\] -->
-                        </p>
-                    </div>
+                    <div class="row hold-btn p-4">
+                        <div class="col-2 button-wrapper">
+                            <p> Hold the regions</p>
+                            <!-- Rounded switch -->
+                            <label class="switch3" >
+                                <input type="checkbox" id="holdSwitch"/>
+                                <div class="ball"></div>
+                            </label>
+                        </div>
                 </div>
-                <div class="container p-20" style="justify-content: center; display:flex; flex-wrap: wrap;">
-                    <button onclick="myFunction('./jsons_plotly/sum_99/Africa.json',this)" type="button" class="btn btn-outline-primary" id="btnAfr">Africa</button>
-                    <button onclick="myFunction('./jsons_plotly/sum_99/Europe.json',this)" type="button" class="btn btn-outline-primary" id="btnEUr">Europe</button>
-                    <button onclick="myFunction('./jsons_plotly/sum_99/AmericaN.json',this)" type="button" class="btn btn-outline-primary" id="btnAmN">North America</button>
-                    <button onclick="myFunction('./jsons_plotly/sum_99/AmericaS.json',this)" type="button" class="btn btn-outline-primary" id="btnAmS">South America</button>
-                    <button onclick="myFunction('./jsons_plotly/sum_99/Asia1.json',this)" type="button" class="btn btn-outline-primary" id="btnAs1">Asia 1</button>
-                    <button onclick="myFunction('./jsons_plotly/sum_99/Asia2.json',this)" type="button" class="btn btn-outline-primary" id="btnAs2">Asia 2</button>
-                    <button onclick="myFunction('./jsons_plotly/sum_99/Asia3.json',this)" type="button" class="btn btn-outline-primary" id="btnAs3">Asia 3</button>
-                    <button onclick="myFunction('./jsons_plotly/sum_99/Oceania1.json',this)" type="button" class="btn btn-outline-primary" id="btnOc1">Oceania 1</button>
-                    <button onclick="myFunction('./jsons_plotly/sum_99/Oceania2.json',this)" type="button" class="btn btn-outline-primary" id="btnOc2">Oceania 2</button>
-                    <button onclick="myFunction_reset_view('./jsons_plotly/sum_99/scatter.json',this)" type="button" class="btn btn-outline-primary" id="btnRset">Reset View</button>
-                </div>
-                <div class="row p-4" style="justify-content: center;flex-wrap: wrap;">
-                    <p style="text-align: center;"> HOLD THE PLOTS</p>
-                    <div class="col-2 button-wrapper">
-                        <!-- Rounded switch -->
-                        <label class="switch3" >
-                            <input type="checkbox" id="holdSwitch"/>
-                            <div class="ball"></div>
-                        </label>
-                    </div>
+                <!-- <div class="row p-4"> -->
+                    <!-- <p class="card-text day-night" style="padding-top: 3rem;"> -->
+                        <!-- The color identifies the relative energy of each family, it is expressed in percentage, 
+                        \(m_{0_{WSys_i}} \over m_{0_{WSys_{tot}}}\). The size of the arrow represents the time averaged \(T_p\), 
+                        whereas the number of the arrow are the number of wave systems that exist in that location, 
+                        the direction of the arrow represent the time averaged \(MWD\) where the wave systems come from. -->
+                    <!-- 
+                        When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+                    \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\] -->
+                    <!-- </p> -->
+                <!-- </div> -->
+                <div class="container p m-auto day-night">
+                    <p>To see the information of each wave system (magnitude, direction, etc.) in detail through quivers you have to select a world 
+                        region first (e.g., Europe). The arrows meaning is:
+                        <ul style="margin-left: 3rem">
+                            <li id = "wsysEnergyExplain"><b>Color</b>: identifies the relative energy (%) of each swell wave system related to the total energy of the swells, the colorbar show the intensity;</li>
+                            <li><b>Size</b>: represents the mean Tp;</li>
+                            <li><b>Direction</b>: represents the mean MWD.</li>
+                        </ul>
+                    <!-- 
+                        When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+                    \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\] -->
+                    
+                        In case you are interested in more than one world region, you can choose the option (Hold the regions).
+                    </p>
+
                 </div>
             </div>
             </div>
         </div>
     </div>
+    
+    <!-- <div id="sfc52kupykwax1j8cfnyetgejk4aae2123s"></div>
+    <script type="text/javascript" src="https://counter4.optistats.ovh/private/counter.js?c=52kupykwax1j8cfnyetgejk4aae2123s&down=async" async></script>
+    <br><noscript><a href="https://www.contadorvisitasgratis.com" title="contador de visitas para web"><img src="https://counter4.optistats.ovh/private/contadorvisitasgratis.php?c=52kupykwax1j8cfnyetgejk4aae2123s" border="0" title="contador de visitas para web" alt="contador de visitas para web"></a></noscript> -->
+
 
     <!-- plotly CDN -->
 
@@ -237,14 +177,57 @@
       });
      
     </script>
-  
+
+    <p style="transform: scale(0.7); transform-origin: top left;" xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+        <a property="dct:title" rel="cc:attributionURL" href="https://ihcantabria.github.io/WaveSystemsViewer/">WaveSystemViewer</a> 
+        by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/OttavioM">IH-Cantabria (Ottavio Mattia Mazzaretto)</a> 
+        is licensed under 
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+            CC BY-NC-SA 4.0
+            <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt="">
+            <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt="">
+            <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt="">
+            <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt="">
+        </a>
+    </p>
+
+    <div id="footer"></div>
+
 </body>
 
 <script src="./js/day-night-js.js"></script>
 <!-- LOADING THE NAV BAR NEED THE QUERY OF JS -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script type="text/javascript" src="./js/navbar-js.js"></script>
+
 <!-- <script type="text/javascript" src="./js/common-layout.js"></script> -->
+
+
+<!-- <iframe src="footer.html" width="100%" height="100%" frameborder="0" scrolling="no"></iframe> -->
+<!-- <include src="footer.php"></include> -->
+
+<!-- jQuery for loading HTML header and footer -->
+<script
+src="https://code.jquery.com/jquery-3.7.1.min.js"
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+crossorigin="anonymous">
+</script>
+
+<script>
+    $(function() {
+        $("#header").load("header.html", function() {
+            // Dynamically load the day-night-js.js script after the header is loaded
+            $.getScript("/js/day-night-js.js")
+            .done(function() {
+                // Optionally, you can add some initialization code here if needed
+                console.log("LOADED night and day succesfull")
+            })
+            .fail(function() {
+                console.error("Failed to load the day-night-js.js script.");
+            });
+        });
+
+        $("#footer").load("footer.html");
+    });
+</script>
 
 </html>
 
