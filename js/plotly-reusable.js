@@ -74,7 +74,7 @@ function myFunction(jsonFilePath, buttonElement) {
 
     const switchCheckbox = document.getElementById('holdSwitch');
     if (!switchCheckbox.checked) { // Use ! to check if it's not checked
-        const basePath = isSwellActive ? '/jsons_plotly' : '/jsons_plotly_WS';
+        const basePath = isSwellActive ? './jsons_plotly' : './jsons_plotly_WS';
         const changing_path = `${basePath}/sum_99/scatter.json`
         loadJSONAndStore(changing_path);
     }

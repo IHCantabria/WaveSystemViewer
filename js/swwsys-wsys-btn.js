@@ -22,8 +22,8 @@ function handleButtonClick(buttonId) {
         wsysButton.classList.remove('btn-active_sys');
         
         // Update the script content
-        updateJsonPaths('/jsons_plotly/sum_99/scatter.json');
-        updateButtonPaths('/jsons_plotly', '/jsons_plotly');
+        updateJsonPaths('./jsons_plotly/sum_99/scatter.json');
+        updateButtonPaths('./jsons_plotly', './jsons_plotly');
     } else if (buttonId === 'WSYs') {
         // Update state
         isSwellActive = false;
@@ -35,8 +35,8 @@ function handleButtonClick(buttonId) {
         wsysButton.classList.add('btn-active_sys');
         
         // Update the script content
-        updateJsonPaths('/jsons_plotly_WS/sum_99/scatter.json');
-        updateButtonPaths('/jsons_plotly_WS', '/jsons_plotly_WS');
+        updateJsonPaths('./jsons_plotly_WS/sum_99/scatter.json');
+        updateButtonPaths('./jsons_plotly_WS', './jsons_plotly_WS');
     }
 }
 
