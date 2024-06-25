@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-  const toggleCheckbox = document.querySelector('.toggle--checkbox');
-  const elementsToToggle = document.querySelectorAll('.day-night');
+  const toggleCheckbox = document.querySelector('./toggle--checkbox');
+  const elementsToToggle = document.querySelectorAll('./day-night');
 
   if (toggleCheckbox && elementsToToggle.length > 0) {
     // Add an event listener to the checkbox
